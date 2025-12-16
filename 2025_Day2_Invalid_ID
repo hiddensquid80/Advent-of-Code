@@ -1,0 +1,76 @@
+# Get IDs into a list
+with open('Input.txt','r') as strinput:
+    input2 = '11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124'
+    output = strinput.read().split(',')
+    input2_cleaned = input2.split(',')
+
+    def part1(input):
+        sum_total = []
+        
+        for arange in input:
+   
+            nums = arange.split('-')
+    #// Cleaning the output variable to be a list of 2 strings for the range bounds
+            for i in range(int(nums[0]),int(nums[1])+1):
+                if len(str(i)) % 2 == 0:
+    #// Looking for if the number is of an even length --> there is possibly a number w/ the first half repeated
+
+                    len_num = len(str(i))
+                
+                    s1 = str(i)[0:int(len_num/2)]
+                    s2 = str(i)[int(len_num/2):int(len_num)]
+    #// The first half of the number is s1, the second half is s2
+
+                    if s1 == s2:
+                        sum_total.append(i)
+    #// If the first and second halves are the same, append that number to the list
+
+                    final = sum(sum_total)
+        return final
+
+        # For future
+        # if len_nums % i == 0: --> is i a factor of len_nums?
+        # useful for checking number of repeats
+
+    def part2(input):
+
+        sum_total = []
+
+        for arange in input:
+   
+            nums = arange.split('-')
+    #// Cleaning the output variable to be a list of 2 strings for the range bounds
+            for i in range(int(nums[0]),int(nums[1])+1):
+                if len(str(i)) % 2 == 0:
+    #// Looking for if the number is of an even length --> there is possibly a number w/ the first half repeated
+
+                    len_num = len(str(i))
+                
+                    s1 = str(i)[0:int(len_num/2)]
+                    s2 = str(i)[int(len_num/2):int(len_num)]
+    #// The first half of the number is s1, the second half is s2
+
+                    if s1 == s2:
+                        sum_total.append(i)
+    #// If the first and second halves are the same, append that number to the list
+                
+            for i in range(int(nums[0]),int(nums[1])+1):
+                    len_i = len(str(i))
+                
+                    for n in range(1, len_i//2 + 1):
+                    
+                        if len_i % n == 0:
+                            
+                            substring = str(i)[:n]
+
+                            if substring * (len_i // n) == str(i):
+                                sum_total.append(i)
+        
+        final = sum(set(sum_total))
+        return final
+
+
+    print(f'The answer for part 1 is {part1(output)} \nThe answer for part 2 is {part2(output)}')
+    
+# output should be 35950619148 for pt 2
+# 23039913998 for pt 1
