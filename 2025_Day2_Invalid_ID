@@ -1,8 +1,7 @@
 # Get IDs into a list
 with open('Input.txt','r') as strinput:
-    input2 = '11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124'
+    
     output = strinput.read().split(',')
-    input2_cleaned = input2.split(',')
 
     def part1(input):
         sum_total = []
@@ -27,10 +26,6 @@ with open('Input.txt','r') as strinput:
 
                     final = sum(sum_total)
         return final
-
-        # For future
-        # if len_nums % i == 0: --> is i a factor of len_nums?
-        # useful for checking number of repeats
 
     def part2(input):
 
@@ -71,6 +66,3 @@ with open('Input.txt','r') as strinput:
 
 
     print(f'The answer for part 1 is {part1(output)} \nThe answer for part 2 is {part2(output)}')
-    
-# output should be 35950619148 for pt 2
-# 23039913998 for pt 1
